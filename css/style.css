@@ -1,0 +1,581 @@
+/* Hero Section avec Slider */
+/* Conteneur principal de la section "hero" (la grande bannière en haut de page) */
+.hero {
+    height: 100vh; /* Hauteur égale à 100% de la hauteur de la fenêtre visible */
+    min-height: 700px; /* Hauteur minimale de 700 pixels, pour éviter qu'elle soit trop petite sur grands écrans */
+    position: relative; /* Permet de positionner les éléments enfants en absolu par rapport à ce conteneur */
+    overflow: hidden; /* Coupe tout ce qui dépasse des limites de ce conteneur */
+}
+
+/* Chaque élément du carousel (diaporama) dans la section hero */
+.hero .carousel-item {
+    height: 100vh; /* Hauteur de chaque slide égale à la hauteur de la fenêtre */
+    min-height: 700px; /* Hauteur minimale de 700 pixels pour chaque slide */
+}
+
+/* Image dans chaque élément du carousel */
+.hero .carousel-item img {
+    height: 100%; /* Image prend toute la hauteur de son parent (le slide) */
+    object-fit: cover; /* L'image couvre tout l'espace disponible sans déformation, en rognant si nécessaire */
+    object-position: center; /* Centrage de l'image pour le rognage */
+    filter: brightness(0.7); /* Applique un filtre de luminosité pour assombrir l'image (70% de luminosité) */
+}
+
+/* Contenu textuel ou autre contenu superposé sur le carousel */
+.hero-content {
+    position: absolute; /* Positionné par rapport à son parent (ici .hero) */
+    top: 50%; /* Placé verticalement à 50% de la hauteur du parent */
+    left: 50%; /* Placé horizontalement à 50% de la largeur du parent */
+    transform: translate(-50%, -50%); /* Décalage vers le haut et la gauche pour centrer parfaitement le contenu */
+    z-index: 2; /* Priorité d'affichage pour être au-dessus des images du carousel */
+    color: white; /* Texte en blanc */
+    text-align: center; /* Texte centré horizontalement */
+    width: 100%; /* Largeur à 100% pour prendre toute la largeur disponible */
+    padding: 0 15px; /* Espacement horizontal interne pour éviter que le texte touche les bords */
+}
+
+/* Styles des boutons de navigation "précédent" et "suivant" du carousel dans la section hero */
+.hero .carousel-control-prev,
+.hero .carousel-control-next {
+    width: 50px; /* Largeur fixe de 50 pixels pour le bouton */
+    height: 50px; /* Hauteur fixe de 50 pixels pour le bouton */
+    background: rgba(255, 255, 255, 0.2); /* Fond blanc semi-transparent à 20% d’opacité */
+    border-radius: 50%; /* Forme ronde grâce à un rayon de bordure complet */
+    top: 50%; /* Position verticale à 50% (milieu du conteneur parent) */
+    transform: translateY(-50%); /* Décalage vers le haut de 50% de sa hauteur pour un centrage vertical parfait */
+    backdrop-filter: blur(5px); /* Flou léger de l’arrière-plan derrière le bouton (effet glassmorphism) */
+    transition: all 0.3s ease; /* Transition douce de 0.3 secondes sur tous les changements (couleur, etc.) */
+}
+
+/* Au survol des boutons précédent et suivant */
+.hero .carousel-control-prev:hover,
+.hero .carousel-control-next:hover {
+    background: var(--primary); /* Change le fond vers la couleur définie dans la variable CSS --primary (plus visible) */
+}
+
+/* Animation des titres principaux dans la section hero */
+.hero-title {
+    font-size: 4rem;            /* Taille de police très grande pour un titre impactant */
+    font-weight: 700;           /* Texte en gras */
+    margin-bottom: 1.5rem;      /* Espace en dessous du titre */
+    line-height: 1.2;           /* Hauteur de ligne pour un bon espacement vertical */
+    opacity: 0;                 /* Initialement invisible */
+    transform: translateY(30px); /* Décalage vers le bas de 30 pixels (hors de vue) */
+    transition: all 0.8s ease;  /* Transition fluide de 0.8 secondes pour toutes les propriétés */
+}
+
+/* Quand l'élément carousel-item est actif (visible) : */
+.carousel-item.active .hero-title {
+    opacity: 1;                 /* Titre devient visible */
+    transform: translateY(0);   /* Remontée à sa position normale (animation d’apparition verticale) */
+}
+
+/* Animation des sous-titres dans la section hero */
+.hero-subtitle {
+    font-size: 1.5rem;           /* Taille de police plus petite que le titre */
+    margin-bottom: 2rem;         /* Espace en dessous du sous-titre */
+    max-width: 700px;            /* Largeur maximale du texte pour une meilleure lisibilité */
+    margin-left: auto;           /* Centrage horizontal */
+    margin-right: auto;          /* Centrage horizontal */
+    opacity: 0;                  /* Initialement invisible */
+    transform: translateY(30px); /* Décalage vers le bas de 30 pixels */
+    transition: all 0.8s ease 0.2s; /* Transition fluide de 0.8s avec un délai de 0.2s */
+}
+
+/* Quand l'élément carousel-item est actif : */
+.carousel-item.active .hero-subtitle {
+    opacity: 1;                 /* Sous-titre devient visible */
+    transform: translateY(0);   /* Remontée à sa position normale */
+}
+
+/* Animation des boutons dans la section hero */
+.hero .btn {
+    opacity: 0;                 /* Initialement invisible */
+    transform: translateY(30px); /* Décalage vers le bas */
+    transition: all 0.8s ease 0.4s; /* Transition fluide de 0.8s avec un délai de 0.4s (apparition plus tardive) */
+}
+
+/* Quand l'élément carousel-item est actif : */
+.carousel-item.active .btn {
+    opacity: 1;                 /* Bouton devient visible */
+    transform: translateY(0);   /* Remontée à sa position normale */
+}
+
+/* Styles responsives pour écrans moyens et petits (tablettes et smartphones) */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;      /* Taille de titre réduite pour s’adapter aux petits écrans */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;      /* Taille de sous-titre réduite */
+    }
+
+    /* Taille des boutons de navigation carousel réduite */
+    .hero .carousel-control-prev,
+    .hero .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Définition des variables CSS globales (couleurs et dégradé) */
+:root {
+    --primary: #00b894;          /* Couleur principale, un vert clair vif */
+    --primary-dark: #019875;     /* Variante plus foncée de la couleur principale */
+    --secondary: #55efc4;        /* Couleur secondaire, un vert très clair */
+    --dark: #2d3436;             /* Couleur sombre utilisée pour les textes */
+    --light: #f0fdf4;            /* Couleur claire, souvent pour les fonds */
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    /* Dégradé linéaire à 135 degrés allant de la couleur principale à la secondaire */
+}
+
+/* Réinitialisation globale des marges et des paddings, et définition du modèle de boîte */
+* {
+    margin: 0;                   /* Suppression des marges par défaut */
+    padding: 0;                  /* Suppression des paddings par défaut */
+    box-sizing: border-box;      /* Le padding et la bordure sont inclus dans la taille totale des éléments */
+}
+
+/* Styles de base pour la balise <body> */
+body {
+    font-family: 'Poppins', sans-serif;  /* Police principale utilisée sur le site */
+    color: var(--dark);                   /* Couleur du texte : couleur sombre définie précédemment */
+    overflow-x: hidden;                   /* Empêche le défilement horizontal (utile pour éviter les scrolls involontaires) */
+    background-color: #ffffff;            /* Fond blanc */
+}
+
+/* ===== Navbar ===== */
+
+/* Style de base de la navbar */
+.navbar {
+    padding: 20px 0;                   /* Espace vertical autour du contenu de la navbar */
+    transition: all 0.5s ease;        /* Transition douce pour tous les changements de style (ex : padding, couleur) */
+}
+
+/* Style de la navbar quand la page est scrollée (class ajoutée dynamiquement) */
+.navbar.scrolled {
+    padding: 10px 0;                  /* Réduction de l’espace vertical quand on descend la page */
+    background-color: rgba(255, 255, 255, 0.95) !important; /* Fond blanc presque opaque */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);             /* Ombre portée pour donner un effet de profondeur */
+    backdrop-filter: blur(10px);      /* Flou d’arrière-plan pour un effet de verre dépoli */
+}
+
+/* Style du logo ou nom de la marque dans la navbar */
+.navbar-brand {
+    font-weight: 700;                /* Texte en gras */
+    font-size: 1.8rem;               /* Taille de police */
+    background: var(--gradient);     /* Applique le dégradé défini dans les variables CSS */
+    -webkit-background-clip: text;   /* Découpe le fond sur le texte (pour Safari/Chrome) */
+    background-clip: text;            /* Découpe le fond sur le texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour que le dégradé apparaisse */
+}
+
+/* Style des liens de navigation */
+.nav-link {
+    position: relative;              /* Nécessaire pour le pseudo-élément ::after */
+    margin: 0 10px;                 /* Espacement horizontal entre les liens */
+    font-weight: 500;               /* Poids moyen du texte */
+    color: var(--dark) !important; /* Couleur sombre (important pour surcharger d’autres styles) */
+}
+
+/* Ligne soulignée animée sous chaque lien, initialement cachée */
+.nav-link::after {
+    content: '';                    /* Nécessaire pour créer un pseudo-élément */
+    position: absolute;             /* Positionné par rapport au parent */
+    bottom: 0;                     /* Collé en bas du lien */
+    left: 0;
+    width: 0;                      /* Largeur nulle au départ (invisible) */
+    height: 2px;                   /* Hauteur de la ligne */
+    background: var(--gradient);   /* Ligne en dégradé */
+    transition: width 0.3s ease;   /* Animation de la largeur au survol */
+}
+
+/* Au survol, la ligne s’étend sous tout le texte */
+.nav-link:hover::after {
+    width: 100%;                   /* Ligne pleine largeur */
+}
+
+/* Section téléphone dans la navbar */
+.nav-phone {
+    display: flex;                 /* Alignement horizontal des éléments enfants */
+    align-items: center;           /* Centre verticalement */
+    font-weight: 600;              /* Texte semi-gras */
+    color: var(--primary);         /* Couleur principale */
+}
+
+/* Icone dans la section téléphone */
+.nav-phone i {
+    margin-right: 8px;             /* Espace entre l’icône et le texte */
+    font-size: 1.2rem;             /* Taille de l’icône */
+}
+
+/* Bouton avec un dégradé et styles arrondis */
+.btn-gradient {
+    background: var(--gradient);   /* Fond dégradé */
+    color: white;                  /* Texte blanc */
+    border: none;                  /* Pas de bordure */
+    padding: 12px 30px;            /* Padding interne */
+    border-radius: 50px;           /* Bords très arrondis (pill shape) */
+    font-weight: 600;              /* Texte semi-gras */
+    text-transform: uppercase;     /* Texte en majuscules */
+    letter-spacing: 1px;           /* Espacement entre les lettres */
+    position: relative;            /* Pour tout effet positionné à l’intérieur */
+    overflow: hidden;              /* Cache ce qui dépasse */
+    transition: all 0.3s ease;     /* Transition douce sur toutes les propriétés */
+    box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3); /* Ombre portée légère */
+}
+
+/* Au survol, effet de soulèvement du bouton */
+.btn-gradient:hover {
+    color: white;                  /* Texte toujours blanc */
+    transform: translateY(-3px);  /* Remonte légèrement */
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.4); /* Ombre plus grande et plus visible */
+}
+
+/* Lors du clic, effet d’enfoncement */
+.btn-gradient:active {
+    transform: translateY(1px);   /* Descend légèrement */
+}
+/* ===== About Section (Section "À propos") ===== */
+
+/* Style général de la section about */
+.about {
+    padding: 100px 0;           /* Espacement vertical haut et bas de 100px */
+    position: relative;         /* Nécessaire pour positionner des éléments enfants en absolu */
+}
+
+/* Pseudo-élément avant la section, utilisé pour un effet visuel en fond */
+.about::before {
+    content: '';               /* Nécessaire pour créer un élément invisible */
+    position: absolute;        /* Positionné par rapport à .about */
+    top: 0;                   /* En haut de la section */
+    left: 0;                  /* À gauche de la section */
+    width: 100%;              /* Prend toute la largeur */
+    height: 100%;             /* Prend toute la hauteur */
+    background: url('assets/wave.svg') center/cover no-repeat;  /* Image de fond centrée, couvrant toute la zone, sans répétition */
+    opacity: 0.05;            /* Très transparent (5%) pour un effet discret */
+    z-index: -1;              /* Placé derrière le contenu principal */
+}
+
+/* Titre de section (ex : "À propos") */
+.section-title {
+    font-size: 2.5rem;         /* Taille de texte assez grande */
+    font-weight: 700;          /* Texte en gras */
+    margin-bottom: 3rem;       /* Espace sous le titre */
+    position: relative;        /* Pour positionner le pseudo-élément ::after */
+    display: inline-block;     /* Permet au ::after d’être positionné correctement sous le texte */
+}
+
+/* Petite barre colorée sous le titre pour l’effet visuel */
+.section-title::after {
+    content: '';               /* Pseudo-élément vide */
+    position: absolute;        /* Positionné par rapport au titre */
+    bottom: -10px;             /* 10px en dessous du texte */
+    left: 0;                   /* Aligné à gauche */
+    width: 50px;               /* Largeur fixe de 50px */
+    height: 4px;               /* Hauteur de 4px */
+    background: var(--gradient); /* Couleur dégradée définie dans :root */
+    border-radius: 2px;        /* Bords légèrement arrondis */
+}
+
+/* Image dans la section about */
+.about-img {
+    border-radius: 20px;                           /* Bords arrondis */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);  /* Ombre portée douce sous l’image */
+    transform: perspective(1000px) rotateY(-10deg); /* Effet 3D avec rotation sur l’axe Y */
+    transition: all 0.5s ease;                     /* Transition douce sur tous les changements */
+}
+
+/* Au survol de l’image, rotation supprimée (image face à l’utilisateur) */
+.about-img:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+/* Texte descriptif dans la section about */
+.about-text {
+    font-size: 1.1rem;       /* Taille de texte légèrement plus grande que la normale */
+    line-height: 1.8;        /* Hauteur de ligne confortable pour la lecture */
+    margin-bottom: 2rem;     /* Espace sous le paragraphe */
+}
+
+/* Liste des fonctionnalités ou points clés */
+.feature-list {
+    list-style: none;        /* Suppression des puces par défaut */
+    padding: 0;              /* Suppression du padding par défaut */
+}
+
+/* Chaque élément de la liste */
+.feature-list li {
+    margin-bottom: 15px;     /* Espace entre les items */
+    display: flex;           /* Alignement horizontal des éléments enfants */
+    align-items: flex-start; /* Alignement vertical en haut (utile si icône plus haute que texte) */
+}
+
+/* Icône devant chaque élément de la liste */
+.feature-list i {
+    color: var(--primary);    /* Couleur principale */
+    font-size: 1.2rem;        /* Taille de l’icône */
+    margin-right: 10px;       /* Espace entre l’icône et le texte */
+    margin-top: 3px;          /* Légère marge en haut pour aligner verticalement */
+}
+
+/* ===== Services Section (Section des services) ===== */
+
+/* Conteneur général des services */
+.services {
+    padding: 100px 0;               /* Espacement vertical haut et bas de 100px */
+    background-color: var(--light); /* Fond clair, défini par la variable CSS --light */
+}
+
+/* Carte individuelle de service */
+.service-card {
+    background: white;              /* Fond blanc */
+    border-radius: 15px;            /* Bords arrondis pour un effet doux */
+    padding: 40px 30px;             /* Espacement intérieur important (haut/bas 40px, gauche/droite 30px) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Ombre portée douce et légère */
+    transition: all 0.5s ease;     /* Transition fluide sur tous les changements */
+    height: 100%;                  /* Prend toute la hauteur disponible */
+    position: relative;            /* Pour gérer le pseudo-élément ::before en absolu */
+    overflow: hidden;              /* Cache tout débordement hors de la carte */
+    z-index: 1;                   /* Niveau d’empilement, pour superposition éventuelle */
+}
+
+/* Petite bande colorée en haut de la carte (barre décorative) */
+.service-card::before {
+    content: '';                  /* Nécessaire pour créer un pseudo-élément */
+    position: absolute;           /* Positionné relativement à .service-card */
+    top: 0;                      /* En haut de la carte */
+    left: 0;                     /* À gauche */
+    width: 100%;                 /* Largeur pleine */
+    height: 5px;                 /* Hauteur initiale de 5px */
+    background: var(--gradient); /* Couleur en dégradé défini dans :root */
+    transition: all 0.3s ease;   /* Transition douce pour les changements */
+}
+
+/* Effet au survol de la carte */
+.service-card:hover {
+    transform: translateY(-10px); /* Remonte la carte de 10px (effet "pop-up") */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+}
+
+/* Effet au survol sur la barre colorée */
+.service-card:hover::before {
+    height: 10px;                 /* Double la hauteur de la bande colorée */
+}
+
+/* Icône du service */
+.service-icon {
+    font-size: 2.5rem;            /* Taille assez grande pour l’icône */
+    margin-bottom: 20px;          /* Espace sous l’icône */
+    background: var(--gradient);  /* Dégradé en arrière-plan */
+    -webkit-background-clip: text; /* Clip du dégradé sur le texte (Webkit) */
+    background-clip: text;        /* Clip du dégradé sur le texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour faire apparaître le dégradé */
+}
+
+/* Titre du service */
+.service-title {
+    font-size: 1.5rem;            /* Taille modérée */
+    font-weight: 600;             /* Gras moyen */
+    margin-bottom: 15px;          /* Espace sous le titre */
+}
+
+/* Texte descriptif du service */
+.service-text {
+    color: #666;                  /* Couleur gris foncé pour le texte */
+    line-height: 1.7;             /* Hauteur de ligne confortable pour la lecture */
+}
+
+
+/* ===== Contact Section (Section Contact) ===== */
+
+/* Conteneur global de la section contact */
+.contact {
+    padding: 100px 0;             /* Espace vertical important en haut et bas */
+    position: relative;           /* Pour positionner le pseudo-élément ::before */
+}
+
+/* Pseudo-élément décoratif placé en bas de la section */
+.contact::before {
+    content: '';                 /* Nécessaire pour afficher le pseudo-élément */
+    position: absolute;          /* Position absolue par rapport à .contact */
+    bottom: 0;                  /* Aligné en bas */
+    left: 0;                    /* Aligné à gauche */
+    width: 100%;                /* Prend toute la largeur */
+    height: 50%;                /* Hauteur de la moitié de la section */
+    background: var(--light);   /* Fond clair (variable CSS) */
+    z-index: -1;                /* Place ce calque derrière le contenu */
+}
+
+/* Conteneur du formulaire de contact */
+.contact-form {
+    background: white;           /* Fond blanc pour contraster */
+    padding: 40px;               /* Espacement intérieur important */
+    border-radius: 15px;         /* Bords arrondis doux */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Ombre portée très légère */
+}
+
+/* Styles généraux des champs du formulaire */
+.form-control {
+    height: 50px;                /* Hauteur fixe */
+    border: 1px solid #eee;      /* Bordure claire */
+    border-radius: 8px;          /* Bords arrondis */
+    padding: 10px 15px;          /* Espacement intérieur */
+    margin-bottom: 20px;         /* Espace sous chaque champ */
+    transition: all 0.3s ease;   /* Transition douce sur tous changements */
+}
+
+/* Effet visuel quand un champ est sélectionné (focus) */
+.form-control:focus {
+    border-color: var(--primary);                    /* Bordure passe à la couleur primaire */
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);  /* Ombre extérieure bleutée autour du champ */
+}
+
+/* Styles spécifiques pour les zones de texte (textarea) */
+textarea.form-control {
+    height: auto;             /* Hauteur automatique selon contenu */
+    min-height: 150px;        /* Hauteur minimum pour avoir une zone de saisie assez grande */
+}
+
+/* Conteneur des informations de contact (à côté du formulaire) */
+.contact-info {
+    padding-left: 40px;       /* Décalage à gauche pour espacer */
+}
+
+/* Chaque bloc d’information de contact */
+.contact-item {
+    display: flex;            /* Mise en ligne horizontale avec flexbox */
+    align-items: flex-start; /* Aligne les items en haut */
+    margin-bottom: 30px;      /* Espace entre chaque contact-item */
+}
+
+/* Style pour l’icône dans chaque contact-item */
+.contact-icon {
+    width: 50px;              /* Largeur fixe */
+    height: 50px;             /* Hauteur fixe (carré) */
+    background: var(--gradient); /* Fond dégradé coloré */
+    color: white;             /* Couleur de l’icône en blanc */
+    border-radius: 50%;       /* Icône circulaire */
+    display: flex;            /* Utilise flexbox pour centrer l’icône */
+    align-items: center;      /* Centrage vertical */
+    justify-content: center;  /* Centrage horizontal */
+    font-size: 1.2rem;        /* Taille de l’icône */
+    margin-right: 20px;       /* Espace à droite entre icône et texte */
+    flex-shrink: 0;           /* Empêche l’icône de rétrécir */
+}
+
+/* Conteneur texte pour chaque info de contact */
+.contact-text h5 {
+    font-weight: 600;         /* Titre en semi-gras */
+    margin-bottom: 5px;       /* Petit espace sous le titre */
+}
+
+/* Texte descriptif sous le titre */
+.contact-text p {
+    color: #666;              /* Gris foncé */
+    margin: 0;                /* Pas de marge */
+}
+
+/* Conteneur pour la carte (Google Map ou autre) */
+.map-container {
+    border-radius: 15px;      /* Bords arrondis */
+    overflow: hidden;         /* Cache tout dépassement (utile pour la carte) */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Ombre légère */
+    height: 100%;             /* Prend toute la hauteur disponible */
+}
+
+
+.footer {
+    background: var(--dark);          /* Fond sombre */
+    color: white;                     /* Texte blanc */
+    padding: 70px 0 30px;             /* Padding haut, horizontal 0, bas */
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: var(--gradient);      /* Dégradé en background */
+    -webkit-background-clip: text;    /* Clip background au texte (pour dégradé sur texte) */
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour voir le dégradé */
+}
+
+.footer-text {
+    color: #aaa;                     /* Gris clair */
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;                   /* Icônes alignées horizontalement */
+    margin-bottom: 30px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;             /* Cercle */
+    background: rgba(255, 255, 255, 0.1);  /* Fond semi-transparent blanc */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;             /* Espace entre icônes */
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--primary);     /* Couleur primaire au hover */
+    transform: translateY(-3px);    /* Légère remontée */
+}
+
+.footer-links h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-links h5::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--gradient);    /* Ligne dégradée sous le titre */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;              /* Décalage vers la droite au hover */
+}
+
+.copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    margin-top: 50px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+

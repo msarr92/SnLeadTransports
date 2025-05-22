@@ -698,8 +698,48 @@ body {
     background-color: var(--primary);                       /* Fond passe à la couleur primaire */
     border-color: var(--primary);                           /* Bordure passe à la couleur primaire */
 }
-/* Pour tablettes (≤ 992px) */
-@media (max-width: 992px) {
+/* ===== Responsive Adjustments ===== */
+
+/* Pour très grands écrans (≥ 1400px) */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.8rem;
+        max-width: 800px;
+    }
+}
+
+/* Pour ordinateurs (≥ 1200px) */
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+}
+
+/* Pour tablettes en paysage (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+    .hero-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+    }
+
+    .service-card {
+        padding: 30px 20px;
+    }
+}
+
+/* Pour tablettes (768px - 991px) */
+@media (max-width: 991px) {
     .hero-title {
         font-size: 3rem;
     }
@@ -708,18 +748,31 @@ body {
         font-size: 1.3rem;
     }
 
-    .service-card {
-        padding: 30px 20px;
+    .about,
+    .services,
+    .contact {
+        padding: 80px 0;
+    }
+
+    .about-img {
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .contact-info {
         padding-left: 0;
-        margin-top: 30px;
+        margin-top: 40px;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
     }
 }
 
-/* Pour petits écrans (≤ 768px) */
-@media (max-width: 768px) {
+/* Pour petits téléphones en paysage (576px - 767px) */
+@media (max-width: 767px) {
     .hero-title {
         font-size: 2.5rem;
     }
@@ -728,42 +781,25 @@ body {
         font-size: 1.1rem;
     }
 
-    .about {
-        padding: 70px 0;
+    .hero .btn {
+        display: block;
+        width: 80%;
+        margin: 0 auto 10px;
     }
 
-    .services {
-        padding: 70px 0;
+    .hero .btn.me-3 {
+        margin-right: auto !important;
     }
 
+    .about,
+    .services,
     .contact {
-        padding: 70px 0;
+        padding: 60px 0;
     }
 
-    .navbar {
-        padding: 15px 0;
-    }
-
-    .btn-gradient {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-
-    .hero .carousel-control-prev,
-    .hero .carousel-control-next {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-/* Pour très petits écrans (≤ 576px) */
-@media (max-width: 576px) {
-    .hero-title {
+    .section-title {
         font-size: 2rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .feature-list li {
@@ -771,48 +807,125 @@ body {
     }
 
     .service-card {
-        padding: 25px 15px;
+        margin-bottom: 20px;
     }
 
     .contact-form {
-        padding: 30px 20px;
+        padding: 30px;
+    }
+}
+
+/* Pour petits téléphones (≤ 575px) */
+@media (max-width: 575px) {
+    .hero {
+        min-height: 600px;
     }
 
-    .social-link {
-        width: 35px;
-        height: 35px;
-        margin-right: 8px;
+    .hero .carousel-item {
+        min-height: 600px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about,
+    .services,
+    .contact {
+        padding: 50px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .service-card {
+        padding: 25px 20px;
+    }
+
+    .service-title {
+        font-size: 1.3rem;
+    }
+
+    .service-text {
+        font-size: 0.95rem;
+    }
+
+    .contact-form {
+        padding: 25px 20px;
+    }
+
+    .form-control {
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    textarea.form-control {
+        min-height: 120px;
+    }
+
+    .footer {
+        padding: 50px 0 20px;
     }
 
     .footer-logo {
         font-size: 1.5rem;
     }
-}
-/* Placeholder en mode clair */
-::placeholder {
-    color: #6c757d !important;
-    opacity: 1 !important;
+
+    .copyright {
+        margin-top: 30px;
+        padding-top: 20px;
+        font-size: 0.8rem;
+    }
+
+    .theme-switcher {
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
-/* Placeholder en mode sombre */
-[data-theme="dark"] ::placeholder {
-    color: #aaa !important;
-}
+/* Pour très petits téléphones (≤ 400px) */
+@media (max-width: 400px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
 
-[data-theme="dark"] .form-select {
-    background-color: #2d2d2d;
-    color: #f8f9fa;
-    border-color: #444;
-}
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
 
-[data-theme="dark"] .form-select:disabled {
-    background-color: #333;
-    color: #777;
-}
+    .hero .btn {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
 
-[data-theme="dark"] .form-select option {
-    background-color: #2d2d2d;
-    color: #f8f9fa;
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        margin: 0 8px;
+        font-size: 0.9rem;
+    }
+
+    .nav-phone {
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
 }
 
 

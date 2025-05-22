@@ -121,9 +121,9 @@
 
 /* Définition des variables CSS globales (couleurs et dégradé) */
 :root {
-    --primary: #00b894;          /* Couleur principale, un vert clair vif */
-    --primary-dark: #019875;     /* Variante plus foncée de la couleur principale */
-    --secondary: #55efc4;        /* Couleur secondaire, un vert très clair */
+    --primary: #003ac4;          /* Couleur principale, un vert clair vif */
+    --primary-dark: #ffffff;     /* Variante plus foncée de la couleur principale */
+    --secondary: #0380fc;        /* Couleur secondaire, un vert très clair */
     --dark: #2d3436;             /* Couleur sombre utilisée pour les textes */
     --light: #f0fdf4;            /* Couleur claire, souvent pour les fonds */
     --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -253,7 +253,7 @@ body {
     left: 0;                  /* À gauche de la section */
     width: 100%;              /* Prend toute la largeur */
     height: 100%;             /* Prend toute la hauteur */
-    background: url('assets/wave.svg') center/cover no-repeat;  /* Image de fond centrée, couvrant toute la zone, sans répétition */
+    /*background: url('assets/wave.svg') center/cover no-repeat;  !* Image de fond centrée, couvrant toute la zone, sans répétition *!*/
     opacity: 0.05;            /* Très transparent (5%) pour un effet discret */
     z-index: -1;              /* Placé derrière le contenu principal */
 }

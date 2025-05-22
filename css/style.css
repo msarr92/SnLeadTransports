@@ -486,96 +486,334 @@ textarea.form-control {
 }
 
 
+/* Style général du footer */
 .footer {
-    background: var(--dark);          /* Fond sombre */
-    color: white;                     /* Texte blanc */
-    padding: 70px 0 30px;             /* Padding haut, horizontal 0, bas */
+    background: var(--dark);          /* Fond sombre défini via une variable CSS */
+    color: white;                     /* Texte en blanc */
+    padding: 70px 0 30px;             /* 70px en haut, 0 sur les côtés, 30px en bas */
 }
 
+/* Logo du footer avec effet dégradé sur le texte */
 .footer-logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: inline-block;
-    background: var(--gradient);      /* Dégradé en background */
-    -webkit-background-clip: text;    /* Clip background au texte (pour dégradé sur texte) */
-    background-clip: text;
-    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour voir le dégradé */
+    font-size: 1.8rem;                /* Taille du texte */
+    font-weight: 700;                 /* Texte en gras */
+    margin-bottom: 20px;              /* Marge inférieure */
+    display: inline-block;            /* Permet de définir des marges et padding */
+    background: var(--gradient);      /* Dégradé en fond via variable */
+    -webkit-background-clip: text;    /* Clip le fond au texte sous WebKit */
+    background-clip: text;            /* Clip le fond au texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour voir le fond dégradé */
 }
 
+/* Texte informatif du footer */
 .footer-text {
-    color: #aaa;                     /* Gris clair */
-    line-height: 1.7;
-    margin-bottom: 20px;
+    color: #aaa;                      /* Couleur gris clair */
+    line-height: 1.7;                 /* Hauteur de ligne */
+    margin-bottom: 20px;              /* Marge inférieure */
 }
 
+/* Conteneur pour les icônes de réseaux sociaux */
 .social-links {
-    display: flex;                   /* Icônes alignées horizontalement */
-    margin-bottom: 30px;
+    display: flex;                    /* Aligne les enfants horizontalement */
+    margin-bottom: 30px;              /* Marge inférieure */
 }
 
+/* Style des icônes sociales */
 .social-link {
     width: 40px;
     height: 40px;
-    border-radius: 50%;             /* Cercle */
-    background: rgba(255, 255, 255, 0.1);  /* Fond semi-transparent blanc */
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;             /* Espace entre icônes */
-    transition: all 0.3s ease;
+    border-radius: 50%;               /* Rend l'élément circulaire */
+    background: rgba(255, 255, 255, 0.1); /* Fond semi-transparent blanc */
+    color: white;                     /* Couleur de l’icône */
+    display: flex;                    /* Permet de centrer le contenu */
+    align-items: center;              /* Centre verticalement */
+    justify-content: center;          /* Centre horizontalement */
+    margin-right: 10px;               /* Espacement entre icônes */
+    transition: all 0.3s ease;        /* Transition douce pour les effets */
 }
 
+/* Effet au survol des icônes sociales */
 .social-link:hover {
-    background: var(--primary);     /* Couleur primaire au hover */
-    transform: translateY(-3px);    /* Légère remontée */
+    background: var(--primary);       /* Change le fond pour la couleur primaire */
+    transform: translateY(-3px);      /* Fait remonter légèrement l'icône */
 }
 
+/* Titres des sections de liens dans le footer */
 .footer-links h5 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    position: relative;
-    padding-bottom: 10px;
+    font-size: 1.2rem;                /* Taille du texte */
+    font-weight: 600;                 /* Texte en semi-gras */
+    margin-bottom: 20px;              /* Marge inférieure */
+    position: relative;               /* Permet de positionner un élément en absolu à l'intérieur */
+    padding-bottom: 10px;             /* Padding en bas pour laisser de l’espace sous le texte */
 }
 
+/* Ligne décorative sous les titres */
 .footer-links h5::after {
-    content: '';
-    position: absolute;
+    content: '';                      /* Contenu vide, utilisé pour dessiner la ligne */
+    position: absolute;               /* Position absolue par rapport au h5 */
     bottom: 0;
     left: 0;
-    width: 40px;
-    height: 2px;
-    background: var(--gradient);    /* Ligne dégradée sous le titre */
+    width: 40px;                      /* Longueur de la ligne */
+    height: 2px;                      /* Épaisseur de la ligne */
+    background: var(--gradient);      /* Dégradé en fond */
 }
 
+/* Suppression des puces des listes */
 .footer-links ul {
-    list-style: none;
-    padding: 0;
+    list-style: none;                 /* Pas de puces */
+    padding: 0;                       /* Pas de padding par défaut */
 }
 
+/* Espacement entre les liens de la liste */
 .footer-links li {
-    margin-bottom: 10px;
+    margin-bottom: 10px;              /* Espace sous chaque élément */
 }
 
+/* Style des liens dans le footer */
 .footer-links a {
-    color: #aaa;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    color: #aaa;                      /* Gris clair */
+    text-decoration: none;            /* Pas de soulignement */
+    transition: all 0.3s ease;        /* Transition douce pour les effets */
 }
 
+/* Effet au survol des liens */
 .footer-links a:hover {
-    color: white;
-    padding-left: 5px;              /* Décalage vers la droite au hover */
+    color: white;                     /* Passe en blanc */
+    padding-left: 5px;                /* Décale légèrement vers la droite */
 }
 
+/* Section de copyright en bas du footer */
 .copyright {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 30px;
-    margin-top: 50px;
-    color: #aaa;
-    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation */
+    padding-top: 30px;               /* Espace au-dessus du texte */
+    margin-top: 50px;                /* Espace par rapport au contenu précédent */
+    color: #aaa;                     /* Couleur gris clair */
+    font-size: 0.9rem;               /* Taille réduite du texte */
 }
+
+
+/* Variables pour le mode clair */
+:root {
+    --primary: #003ac4;
+    --primary-dark: #ffffff;
+    --secondary: #0380fc;
+    --dark: #2d3436;
+    --light: #f0fdf4;
+    --bg-color: #ffffff;
+    --text-color: #2d3436;
+    --card-bg: #ffffff;
+    --footer-bg: #2d3436;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+/* Variables pour le mode sombre */
+[data-theme="dark"] {
+    --primary: #5695ff;
+    --primary-dark: #ffffff;
+    --secondary: #6bb1ff;
+    --dark: #f8f9fa;
+    --light: #1a1a1a;
+    --bg-color: #121212;
+    --text-color: #f8f9fa;
+    --card-bg: #1e1e1e;
+    --footer-bg: #000000;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+/* Application des variables CSS et styles globaux */
+body {
+    font-family: 'Poppins', sans-serif;                     /* Police principale */
+    color: var(--text-color);                               /* Couleur de texte depuis une variable */
+    overflow-x: hidden;                                      /* Empêche le défilement horizontal */
+    background-color: var(--bg-color);                       /* Couleur de fond depuis une variable */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition douce quand on change le thème */
+}
+
+/* Bouton pour basculer le thème (dark/light) */
+.theme-switcher {
+    position: fixed;       /* Position fixe par rapport à la fenêtre */
+    bottom: 30px;          /* À 30px du bas */
+    right: 30px;           /* À 30px de la droite */
+    z-index: 999;          /* S'assure qu'il soit au-dessus de tout */
+}
+
+/* Styles appliqués quand l'attribut data-theme="dark" est actif sur le <body> */
+
+/* Barre de navigation en mode sombre */
+[data-theme="dark"] .navbar {
+    background-color: rgba(30, 30, 30, 0.95) !important; /* Couleur sombre semi-transparente */
+}
+
+/* Cartes de service et formulaire de contact en fond sombre et texte clair */
+[data-theme="dark"] .service-card,
+[data-theme="dark"] .contact-form {
+    background-color: var(--card-bg);                     /* Fond sombre via variable */
+    color: var(--text-color);                             /* Texte en couleur claire */
+}
+
+/* Textes secondaires et muted en gris clair */
+[data-theme="dark"] .service-text,
+[data-theme="dark"] .contact-text p,
+[data-theme="dark"] .text-muted {
+    color: #aaa !important;                                /* Gris clair forcé */
+}
+
+/* Champs de formulaire en mode sombre */
+[data-theme="dark"] .form-control {
+    background-color: #2d2d2d;                             /* Fond sombre */
+    border-color: #444;                                     /* Bordures légèrement plus claires */
+    color: #f8f9fa;                                         /* Texte clair */
+}
+
+/* Focus sur les champs de formulaire */
+[data-theme="dark"] .form-control:focus {
+    background-color: #2d2d2d;                             /* Même fond en focus */
+    color: #f8f9fa;                                         /* Texte clair */
+}
+
+/* Zone de texte en mode sombre */
+[data-theme="dark"] textarea.form-control {
+    background-color: #2d2d2d;                             /* Fond sombre */
+    color: #f8f9fa;                                         /* Texte clair */
+}
+
+/* Footer en mode sombre */
+[data-theme="dark"] .footer {
+    background: var(--footer-bg);                          /* Fond via variable */
+}
+
+/* Liens du footer au survol dans le thème sombre */
+[data-theme="dark"] .footer-links a:hover {
+    color: var(--primary);                                  /* Passe à la couleur primaire */
+}
+
+/* Bouton outline light en mode sombre */
+[data-theme="dark"] .btn-outline-light {
+    border-color: var(--text-color);                        /* Bordure couleur texte claire */
+    color: var(--text-color);                               /* Texte couleur claire */
+}
+
+/* Hover du bouton outline light en mode sombre */
+[data-theme="dark"] .btn-outline-light:hover {
+    background-color: var(--primary);                       /* Fond passe à la couleur primaire */
+    border-color: var(--primary);                           /* Bordure passe à la couleur primaire */
+}
+/* Pour tablettes (≤ 992px) */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .service-card {
+        padding: 30px 20px;
+    }
+
+    .contact-info {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+}
+
+/* Pour petits écrans (≤ 768px) */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .about {
+        padding: 70px 0;
+    }
+
+    .services {
+        padding: 70px 0;
+    }
+
+    .contact {
+        padding: 70px 0;
+    }
+
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .btn-gradient {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .hero .carousel-control-prev,
+    .hero .carousel-control-next {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Pour très petits écrans (≤ 576px) */
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .feature-list li {
+        font-size: 0.95rem;
+    }
+
+    .service-card {
+        padding: 25px 15px;
+    }
+
+    .contact-form {
+        padding: 30px 20px;
+    }
+
+    .social-link {
+        width: 35px;
+        height: 35px;
+        margin-right: 8px;
+    }
+
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+}
+/* Placeholder en mode clair */
+::placeholder {
+    color: #6c757d !important;
+    opacity: 1 !important;
+}
+
+/* Placeholder en mode sombre */
+[data-theme="dark"] ::placeholder {
+    color: #aaa !important;
+}
+
+[data-theme="dark"] .form-select {
+    background-color: #2d2d2d;
+    color: #f8f9fa;
+    border-color: #444;
+}
+
+[data-theme="dark"] .form-select:disabled {
+    background-color: #333;
+    color: #777;
+}
+
+[data-theme="dark"] .form-select option {
+    background-color: #2d2d2d;
+    color: #f8f9fa;
+}
+
 
 
